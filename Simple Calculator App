@@ -1,0 +1,96 @@
+#importing customtkinter 
+import customtkinter as ctk
+
+# Initialize the main window
+root = ctk.CTk()
+root.title("Simple Calculator")
+root.geometry("380x500")
+root.configure(bg="#aabbcc")
+
+# Create the result label
+label_result = ctk.CTkLabel(root, width=350, height=60, text="", font=("arial", 30), fg_color="#fff")
+label_result.place(x=12, y=20)
+
+# Initialize equation
+equation = ""
+
+# Function to update the equation and display it
+def show(value):
+    global equation
+    equation += value
+    label_result.configure(text=equation)
+
+# Function to clear the equation
+def clear():
+    global equation
+    equation = ""
+    label_result.configure(text=equation)
+
+# Function to calculate the result of the equation
+def cal():
+    global equation
+    try:
+        result = eval(equation)
+        equation = str(result)
+        label_result.configure(text=equation)
+    except Exception:
+        label_result.configure(text="error")
+        equation = ""
+
+# Button definitions
+btn_c = ctk.CTkButton(root, text="C", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=clear)
+btn_c.place(x=10, y=100)
+
+btn_div = ctk.CTkButton(root, text="/", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("/"))
+btn_div.place(x=110, y=100)
+
+btn_mod = ctk.CTkButton(root, text="%", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("%"))
+btn_mod.place(x=210, y=100)
+
+btn_mul = ctk.CTkButton(root, text="*", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("*"))
+btn_mul.place(x=310, y=100)
+
+btn_7 = ctk.CTkButton(root, text="7", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("7"))
+btn_7.place(x=10, y=175)
+
+btn_8 = ctk.CTkButton(root, text="8", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("8"))
+btn_8.place(x=110, y=175)
+
+btn_9 = ctk.CTkButton(root, text="9", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("9"))
+btn_9.place(x=210, y=175)
+
+btn_add = ctk.CTkButton(root, text="+", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("+"))
+btn_add.place(x=310, y=175)
+
+btn_4 = ctk.CTkButton(root, text="4", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("4"))
+btn_4.place(x=10, y=250)
+
+btn_5 = ctk.CTkButton(root, text="5", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("5"))
+btn_5.place(x=110, y=250)
+
+btn_6 = ctk.CTkButton(root, text="6", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("6"))
+btn_6.place(x=210, y=250)
+
+btn_sub = ctk.CTkButton(root, text="-", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("-"))
+btn_sub.place(x=310, y=250)
+
+btn_1 = ctk.CTkButton(root, text="1", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("1"))
+btn_1.place(x=10, y=325)
+
+btn_2 = ctk.CTkButton(root, text="2", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("2"))
+btn_2.place(x=110, y=325)
+
+btn_3 = ctk.CTkButton(root, text="3", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("3"))
+btn_3.place(x=210, y=325)
+
+btn_eq = ctk.CTkButton(root, text="=", width=60, height=135, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=cal)
+btn_eq.place(x=310, y=325)
+
+btn_0 = ctk.CTkButton(root, text="0", width=160, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("0"))
+btn_0.place(x=10, y=400)
+
+btn_dot = ctk.CTkButton(root, text=".", width=60, height=60, font=("arial", 30, "bold"), border_width=3, hover_color="#2a2d36", command=lambda: show("."))
+btn_dot.place(x=210, y=400)
+
+# Run the application
+root.mainloop()
